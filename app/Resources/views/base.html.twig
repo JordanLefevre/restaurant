@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8" />
+        <title>Resto — {% block title %}Bienvenue !{% endblock %}</title>
+        <link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}" />
+        <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
+        <style>
+            nav{background-color: #22b79c}
+            .nav li a:hover{background-color: #24937f; color:white;}
+            .nav li a:visited{background-color: #24937f; color:black;}
+            .nav .active{background-color: #24937f; }
+            .navbar-brand:hover{color:white;}
+            .navbar-brand:visited{color:black;}
+            {% block stylesheets %}{% endblock %}
+        </style>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+    </head>
+    <body>
+        {% block body %}
+            <nav class="navbar navbar-fixed-top">
+                <div class="container-fluid">
+                    <div class="navbar-header">
+                        <a class="navbar-brand" href="{{ path('list_menupage') }}">Restaurant</a>
+                    </div>
+                    <div>
+                        <ul class="nav navbar-nav">
+                            <li class="{% if app.request.attributes.get('_route') == 'list_menupage' %}active{% endif %}"><a href="{{ path('list_menupage') }}">Menus</a></li>
+                            {% if is_granted(expression('"ROLE_USER" in roles'))%}
+                                <li class="{% if app.request.attributes.get('_route') == 'add_menupage' %}active{% endif %}"><a href="{{ path('add_menupage') }}">Suggestion</a></li>
+                            {% endif %}
+                            <li class="{% if app.request.attributes.get('_route') == 'contactpage' %}active{% endif %}"><a href="{{ path('contactpage') }}">Contact</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </nav>
+        {% endblock %}
+
+        {% block javascripts %}{% endblock %}
+    </body>
+</html>

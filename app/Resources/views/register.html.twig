@@ -1,0 +1,19 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Inscription{% endblock %}
+
+{% block body %}
+    <div class="container-fluid">
+        <h1>Inscription</h1>
+        <div class="form-group col-lg-4 col-lg-offset-4">
+            {{ form_start(form) }}
+            {{ form_widget(form) }}
+            {{ form_end(form) }}
+        </div>
+    </div>
+{% endblock %}
+
+{% block stylesheets %}
+    h1{text-align:center; margin-top:10%;}
+    .form_el{margin-top:20px;}
+{% endblock %}

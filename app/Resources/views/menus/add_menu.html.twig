@@ -1,0 +1,27 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Ajouter{% endblock %}
+
+{% block nav %}
+    <li><a href="{{ path('list_menupage') }}">Menus</a></li>
+    <li class="active"><a href="{{ path('add_menupage') }}">Suggestion</a></li>
+    <li><a href="#">Contact</a></li>
+{% endblock %}
+
+{% block body %}
+    {{ parent() }}
+
+    <div class="container-fluid">
+        <h1>Nouveau menu</h1>
+        <div class="form-group col-lg-4 col-lg-offset-4">
+            {{ form_start(form) }}
+            {{ form_widget(form) }}
+            {{ form_end(form) }}
+        </div>
+    </div>
+{% endblock %}
+
+{% block stylesheets %}
+    h1{text-align:center; margin-top:10%;}
+    .form_el{margin-top:20px;}
+{% endblock %}

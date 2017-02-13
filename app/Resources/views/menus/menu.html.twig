@@ -1,0 +1,51 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}{{menu.name}}{% endblock %}
+
+{% block body %}
+    {{ parent() }}
+
+    <div class="container-fluid">
+        <div id="wrap">
+            <div class="row">
+                <div class="details col-lg-4 col-lg-offset-4">
+                    <h1>{{ menu.name }}</h1>
+                    <h4>{{ menu.description }}</h4>
+                    <div>{{ menu.ingredients }}</div>
+                </div>
+            </div>
+            <div class="row boutons">
+                <div class= "bouton">
+                    <a class="btn btn-primary" href="{{ path('list_menupage') }}">
+                        <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
+                        Retour
+                    </a>
+                </div>
+                <div class= "bouton">
+                    <a class="btn btn-danger" href="{{ path('delete_menupage', {'id': menu.id}) }}">
+                        <span class="glyphicon glyphicon-remove" aria-hidden="true"></span>
+                        Supprimer
+                    </a>
+                </div>
+            </div>
+            <div>
+                {{ form_start(form) }}
+                {{ form_widget(form) }}
+                {{ form_end(form) }}
+            </div>
+            <div>
+                {{ total_likes(menu.id) }} votants
+            </div>
+            <div>
+                Moyenne : {{ moyenne_likes(menu.id) }}
+            </div>
+        </div>
+    </div>
+{% endblock %}
+
+{% block stylesheets %}
+    .details{text-align:center; margin-bottom:50px;}
+    .boutons{text-align:center;}
+    .bouton{display:inline-block;}
+    #wrap{margin-top:10%;}
+{% endblock %}

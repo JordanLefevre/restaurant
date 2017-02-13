@@ -1,0 +1,36 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Menus{% endblock %}
+
+{% block body %}
+    {{ parent() }}
+
+    <div class="container-fluid">
+        <div id="wrap">
+            <h1>Menus</h1>
+            <div class="menus">
+                {% for menu in listMenus %}
+                    <div class="menu">
+                        <div class="titleMenu">
+                            <a href="{{ path('menupage', {'id': menu.id}) }}">
+                                <h3>{{ menu.name }}</h3>
+                            </a>
+                        </div>
+                        <div class="detailsMenu">
+                            <i><h4>{{ menu.description }}</h4></i>
+                            <div>{{ menu.ingredients }}</div>
+                        </div>
+                    </div>
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+{% endblock %}
+
+{% block stylesheets %}
+    h1{ color:black; text-align:center;}
+    ul{ padding:0; margin-bottom:35px; list-style:none; }
+    a{color:black;}
+    a:hover{text-decoration:none; color:#bfbfbf; transition-duration:0.5s;}
+    #wrap{margin-top:60px;}
+{% endblock %}
